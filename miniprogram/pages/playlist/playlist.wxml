@@ -1,0 +1,22 @@
+<!--pages/playlist/playlist.wxml-->
+<view class="container">
+  <view>
+    <swiper
+      autoplay="true"
+      indicator-dots="true"
+      interval="2000"
+      duration="1000"
+  >
+    <block wx:for="{{swiperImageUrls}}" wx:key="*this">
+      <swiper-item >
+        <image src="{{item.url}}" mode="widthFix" class="img"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  </view> 
+  <view class="musicLists-container">
+    <block wx:for="{{musicLists}}" wx:key="_id">
+      <v-musicList class="musicList-container" musicList="{{item}}" />
+    </block>
+  </view>
+</view>

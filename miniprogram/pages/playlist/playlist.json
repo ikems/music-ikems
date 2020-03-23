@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-musicList": "/components/musiclist/musiclist"
+  },
+  "enablePullDownRefresh": true
+}

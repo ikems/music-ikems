@@ -1,0 +1,5 @@
+# Project exclude paths
+/cloudfunctions/getMusiclist/node_modules/
+/cloudfunctions/music/node_modules/
+/cloudfunctions/tcbRouter/node_modules/
+/miniprogram/node_modules/

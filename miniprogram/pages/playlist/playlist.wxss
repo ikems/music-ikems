@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.musicLists-container {
+    width: 100%;
+    margin-top: 20rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.musicList-container {
+    width: 40%;
+    margin-bottom: 10rpx;
+}
