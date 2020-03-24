@@ -1,4 +1,15 @@
 <!--components/lyric/lyric.wxml-->
-<scroll-view hidden="{{isLyricShow}}">
-  <view>dasdsa</view>
+<scroll-view 
+  hidden="{{isLyricShow}}" 
+  class="lyric-scroll"
+  scroll-top="{{scrollTop}}"
+  scroll-y
+  scroll-with-animation="true"
+>
+  <view class="lyric-panel">
+    <block wx:for="{{lrcList}}" wx:key="item">
+      <view 
+        class="lyric {{index===curLyricIndex?  'hightlight-lyric':''}}">{{item.lrc}}</view>
+    </block>
+  </view>  
 </scroll-view>

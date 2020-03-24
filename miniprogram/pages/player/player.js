@@ -1,8 +1,8 @@
 // pages/player/player.js
 let songLists = []
 let currentSongIndex = 0
-
 const bgAudioManger = wx.getBackgroundAudioManager()
+const app = getApp()
 
 Page({
 
@@ -14,6 +14,7 @@ Page({
     isPlaying: false,
     isLyricShow: false,
     lyric: '',
+    isSameSong: false,
   },
 
   /**
@@ -24,21 +25,33 @@ Page({
     currentSongIndex = options.index
     songLists = wx.getStorageSync('musicListStorage')
     this._loadSongDetail(options.songId)
-    this._loadSongLyric(options.songId)
   },
 
   //加载音乐
   _loadSongDetail(songId) {
-    bgAudioManger.stop()
+    if (songId === app.getPlayingMusicId()) {
+      this.setData({
+        isSameSong: true
+      })
+    } else {
+      this.setData({
+        isSameSong: false
+      })
+    }
+
+    if (!this.data.isSameSong) {
+      bgAudioManger.stop()
+    }
     const currentSong = songLists[currentSongIndex]
     wx.setNavigationBarTitle({
       title: currentSong.name
     })
-
     this.setData({
       picUrl: currentSong.al.picUrl,
       isPlaying: false
     })
+
+    app.setPlayingMusicId(songId) 
 
     wx.showLoading({
       title: '歌曲加载中',
@@ -51,13 +64,21 @@ Page({
       } 
     }).then(res => {
       let result = JSON.parse(res.result)
-      bgAudioManger.src = result.data[0].url
-      bgAudioManger.title =  currentSong.name
-      bgAudioManger.coverImgUrl = currentSong.al.picUrl
-      bgAudioManger.singer = currentSong.ar[0].name
-      bgAudioManger.epname = currentSong.al.name
+      if (result.data[0].url == null) {
+        wx.showToast({
+          title: '当前歌曲无权限播放',
+        })
+        return
+      }
+      if (!this.data.isSameSong) {
+        bgAudioManger.src = result.data[0].url
+        bgAudioManger.title = currentSong.name
+        bgAudioManger.coverImgUrl = currentSong.al.picUrl
+        bgAudioManger.singer = currentSong.ar[0].name
+        bgAudioManger.epname = currentSong.al.name
+      }   
     })
-
+    this._loadSongLyric(songId)
     this.setData({
       isPlaying: true
     })
@@ -65,12 +86,16 @@ Page({
   },
 
   onToggleLyric() {
-    console.log('切换')
+    // console.log('切换')
     this.setData({
       isLyricShow: !this.data.isLyricShow
     })
   },
 
+  //同步歌词，使其高亮
+  onSyncLyric(event) {
+    this.selectComponent('.lyric').update(event.detail.currentTime)
+  },
 
   //切换音乐的状态
   togglePlaying() {
@@ -109,12 +134,25 @@ Page({
       }
     }).then((res) => {
       // console.log(res)
-      let lyric = '暂无歌词'
+      const slyric = '暂无歌词'
       const lrc = JSON.parse(res.result).lrc
+      const lyric = lrc? lrc.lyric : slyric
       this.setData({
-        lyric: lrc.lyric || lyric
+        lyric
       })
-      console.log(this.data.lyric)
+      // console.log(this.data.lyric)
+    })
+  },
+  
+  onPlay() {
+    this.setData({
+      isPlaying: true
+    })
+  },
+
+  onPause() {
+    this.setData({
+      isPlaying: false
     })
   }
   

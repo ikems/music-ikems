@@ -1,4 +1,6 @@
 // components/songlist/songlist.js
+const app = getApp()
+
 Component({
   /**
    * 组件的属性列表
@@ -14,6 +16,14 @@ Component({
     playingId: -1
   },
 
+  pageLifetimes: {
+    show() {
+      this.setData({
+        playingId: app.getPlayingMusicId().toString()
+      })
+      console.log(this.data.playingId)
+    }
+  },
   /**
    * 组件的方法列表
    */

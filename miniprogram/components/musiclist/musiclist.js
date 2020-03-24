@@ -1,4 +1,5 @@
 // components/musiclist/musiclist.js
+
 Component({
   /**
    * 组件的属性列表
@@ -14,6 +15,8 @@ Component({
       })
     }
   },
+
+
 
   /**
    * 组件的初始数据

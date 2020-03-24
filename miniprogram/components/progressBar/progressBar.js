@@ -10,7 +10,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    isSameSong: Boolean
   },
 
   /**
@@ -25,6 +25,9 @@ Component({
 
   lifetimes: {
     ready() {
+      if (this.properties.isSameSong && this.data.durationTime === '00:00') {
+        this._setTime()
+      }
       this._bindBGMEvent()
       this._getMovableDis()
     }
@@ -36,34 +39,34 @@ Component({
   methods: {
     _setTime() {
       durationTime = backgroundAudioManager.duration
-      console.log(durationTime)
       this.setData({
           durationTime: this._dateFormat(durationTime)
       })
     },
 
-
     _bindBGMEvent() {
       backgroundAudioManager.onPlay(() => {
-        console.log('onPlay')
+        // console.log('onPlay')
         //在拖拽时间结束后，有机率会出发onChange事件，
         //故每当onPlay执行，重新锁住状态
         isMoving = false
+        this.triggerEvent('musicPlay')
       })
 
       backgroundAudioManager.onStop(() => {
-        console.log('onStop')
+        // console.log('onStop')
       })
 
       backgroundAudioManager.onPause(() => {
+        this.triggerEvent('musicPause')
       })
 
       backgroundAudioManager.onWaiting(() => {
-        console.log('onWaiting')
+        // console.log('onWaiting')
       })
 
       backgroundAudioManager.onCanplay(() => {
-        console.log('onCanplay')
+        // console.log('onCanplay')
         if (typeof backgroundAudioManager.duration !== 'undefined') {
           this._setTime()
         } else {
@@ -87,6 +90,9 @@ Component({
             sec = currentSec
             // console.log(sec, this.data.percent)
           }
+          this.triggerEvent('syncLyric', {
+            currentTime
+          })
         }
       })
 
