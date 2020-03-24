@@ -2,14 +2,23 @@
 <view class="player-mask"></view>
 
 <view class="player-info">
-  <view class="player-disc {{isPlaying? 'play':''}}" >
+  <view class="player-disc {{isPlaying? 'play':''}}" bindtap="onToggleLyric">
     <image 
     class="player-img rotation {{isPlaying? '':'rotation-paused'}}" 
     src="{{picUrl}}" 
     />
   </view>
 
-  <v-progressBar class="progress-bar"/>
+  <v-lyric 
+    isLyricShow="{{!isLyricShow}}" 
+    bind:tap="onToggleLyric"
+    lyric="{{lyric}}"
+  />
+
+  <v-progressBar 
+    class="progress-bar"
+    bind:musicEnd="onNext"
+  />
 
 
   <view class="control">

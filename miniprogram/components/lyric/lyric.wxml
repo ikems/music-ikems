@@ -1,0 +1,4 @@
+<!--components/lyric/lyric.wxml-->
+<scroll-view hidden="{{isLyricShow}}">
+  <view>dasdsa</view>
+</scroll-view>

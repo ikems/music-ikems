@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "v-progressBar": "/components/progressBar/progressBar"
+    "v-progressBar": "/components/progressBar/progressBar",
+    "v-lyric": "/components/lyric/lyric"
   }
 }

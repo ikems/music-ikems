@@ -4,7 +4,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -19,7 +19,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"nodeModules": true
 	},
 	"appid": "wx2931b52a8421bf85",
 	"projectname": "music-ikems",
@@ -60,7 +61,7 @@
 					"id": 1,
 					"name": "song",
 					"pathName": "pages/musiclist/musiclist",
-					"query": "musicListId= 3085577764",
+					"query": "musicListId= 2482210411",
 					"scene": null
 				},
 				{

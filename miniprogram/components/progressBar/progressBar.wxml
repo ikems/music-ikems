@@ -5,10 +5,14 @@
       <movable-view
         class="movable-view"
         direction="horizontal"
+        damping="1000"
+        x="{{movableDis}}"
+        bind:change="onChange"
+        bindtouchend="onTouchEnd"
       ></movable-view>
     </movable-area>
     <progress 
-      percent="50%" 
+      percent="{{percent}}" 
       stroke-width="4"
       backgroundColor="#969696"
       activeColor="#fff"

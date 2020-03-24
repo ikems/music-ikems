@@ -11,7 +11,9 @@ Page({
    */
   data: {
     picUrl: '',
-    isPlaying: false
+    isPlaying: false,
+    isLyricShow: false,
+    lyric: '',
   },
 
   /**
@@ -22,6 +24,7 @@ Page({
     currentSongIndex = options.index
     songLists = wx.getStorageSync('musicListStorage')
     this._loadSongDetail(options.songId)
+    this._loadSongLyric(options.songId)
   },
 
   //加载音乐
@@ -53,13 +56,19 @@ Page({
       bgAudioManger.coverImgUrl = currentSong.al.picUrl
       bgAudioManger.singer = currentSong.ar[0].name
       bgAudioManger.epname = currentSong.al.name
-      
     })
 
     this.setData({
       isPlaying: true
     })
     wx.hideLoading()
+  },
+
+  onToggleLyric() {
+    console.log('切换')
+    this.setData({
+      isLyricShow: !this.data.isLyricShow
+    })
   },
 
 
@@ -89,6 +98,24 @@ Page({
   onNext() {
     currentSongIndex = (currentSongIndex + 1) % songLists.length
     this._loadSongDetail(songLists[currentSongIndex].id)
+  },
+
+  _loadSongLyric(musicId) {
+    wx.cloud.callFunction({
+      name: 'music',
+      data: {
+        musicId,
+        $url: 'lyric',
+      }
+    }).then((res) => {
+      // console.log(res)
+      let lyric = '暂无歌词'
+      const lrc = JSON.parse(res.result).lrc
+      this.setData({
+        lyric: lrc.lyric || lyric
+      })
+      console.log(this.data.lyric)
+    })
   }
   
 })
