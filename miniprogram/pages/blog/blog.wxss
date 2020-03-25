@@ -1,1 +1,20 @@
-/* pages/blog/blog.wxss */
+.header-container {
+  width: 100%;
+  height: 100rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+}
+
+.icon-fabu {
+  margin: 0 10rpx;
+}
+
+.search-container {
+  flex: 1;
+  margin-left: 10rpx;
+}

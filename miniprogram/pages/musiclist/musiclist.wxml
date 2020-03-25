@@ -1,4 +1,6 @@
-<view class='detail-container' style='background: url({{listInfo.coverImgUrl}}) no-repeat  top/cover'></view>
+<view 
+  class='detail-container' 
+  style='background: url({{listInfo.coverImgUrl}}) no-repeat  top/cover'></view>
 <view class='detail-mask'></view>
 <view class='detail-info'>
   <image src="{{listInfo.coverImgUrl}}" class='detail-img'></image>

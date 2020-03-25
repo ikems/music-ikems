@@ -1,1 +1,39 @@
-/* components/search/search.wxss */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.left {
+  border-radius: 20rpx;
+  display: flex;
+  flex: 1;
+  height: 68rpx;
+  align-items: center;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.find {
+  margin-left: 20rpx;
+  color: #9f9f9f;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bar {
+  font-size: 28rpx;
+  height: 40rpx;
+  padding-left: 70rpx;
+  flex: 1;
+}
+
+.right {
+  margin-left: 20rpx;
+  background: #d43c33;
+  color: #fff;
+  font-size: 24rpx;
+}

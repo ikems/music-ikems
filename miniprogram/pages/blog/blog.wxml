@@ -1,6 +1,8 @@
 <view class="container">
-  <view>
-    <i class="iconfont icon-fabu"></i>
-    <v-search />
+  <view class="header-container">
+    <i class="iconfont icon-fabu" ></i>
+    <view class="search-container">
+      <v-search iconfont="iconfont" icon-sousuo="icon-sousuo" class=""/>
+    </view> 
   </view>
 </view>
