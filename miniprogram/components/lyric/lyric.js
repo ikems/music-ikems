@@ -39,7 +39,7 @@ Component({
 
   lifetimes: {
     ready() {
-      //解析手机的单位尺寸，方便歌词滚动
+      //解析手机的单位尺寸，在不同的手机上歌词滚动相应的距离
       wx.getSystemInfo({
         success: function(res) {
           //求出1rpx的大小， 64为一行歌词的高度

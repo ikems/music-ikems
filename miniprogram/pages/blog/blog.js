@@ -1,4 +1,3 @@
-// pages/blog/blog.js
 Page({
 
   /**

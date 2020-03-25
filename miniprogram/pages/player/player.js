@@ -1,4 +1,3 @@
-// pages/player/player.js
 let songLists = []
 let currentSongIndex = 0
 const bgAudioManger = wx.getBackgroundAudioManager()
@@ -21,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    // console.log(options)
     currentSongIndex = options.index
     songLists = wx.getStorageSync('musicListStorage')
     this._loadSongDetail(options.songId)

@@ -29,8 +29,8 @@
   />
 
   <view class="control">
-    <text class="iconfont iconshangyishou" bind:tap="onPrev"></text>
-    <text class="iconfont {{isPlaying? 'iconzanting':'iconbofang'}}" bind:tap="togglePlaying"></text>
-    <text class="iconfont iconxiayishou" bind:tap="onNext"></text>
+    <text class="iconfont icon-shangyishoushangyige" bind:tap="onPrev"></text>
+    <text class="iconfont {{isPlaying? 'icon-zanting1':'icon-bofang1'}}" bind:tap="togglePlaying"></text>
+    <text class="iconfont icon-xiayigexiayishou" bind:tap="onNext"></text>
   </view>
 </view>

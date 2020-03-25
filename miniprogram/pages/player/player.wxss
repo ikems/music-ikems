@@ -97,23 +97,25 @@
 
 
 .control {
+  width: 50%;
   position: absolute;
   bottom: 8%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
+  justify-content: space-around
 }
 
 .control .iconfont {
   color: #fefefe;
 }
 
-.iconshangyishou, .iconxiayishou {
+.icon-shangyishoushangyige, .icon-xiayigexiayishou {
   font-size: 60rpx;
 }
 
-.iconbofang, iconzanting {
+.icon-zanting1, .icon-bofang1 {
   font-size: 80rpx;
   margin: 0 60rpx;
 }

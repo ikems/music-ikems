@@ -104,11 +104,10 @@ Component({
     onChange(event) {
       // console.log(event.detail)
       if (event.detail.source === 'touch') {
-        this.data.percent = event.detail.x /
-          (movableAreaWidth - movableViewWidth) * 100
         this.data.movableDis = event.detail.x
         this.setData({
-          currentTime: this._dateFormat(backgroundAudioManager.currentTime)
+          currentTime: this._dateFormat(backgroundAudioManager.currentTime),
+          percent: event.detail.x / (movableAreaWidth - movableViewWidth) * 100
         })
         isMoving = true
       }

@@ -1,2 +1,6 @@
-<!--pages/blog/blog.wxml-->
-<text>pages/blog/blog.wxml</text>
+<view class="container">
+  <view>
+    <i class="iconfont icon-fabu"></i>
+    <v-search />
+  </view>
+</view>
