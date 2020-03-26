@@ -1,8 +1,19 @@
 <view class="container">
   <view class="header-container">
-    <i class="iconfont icon-fabu" ></i>
+    <i class="iconfont icon-fabu" bind:tap="onPublish"></i>
     <view class="search-container">
-      <v-search iconfont="iconfont" icon-sousuo="icon-sousuo" class=""/>
+      <v-search 
+      iconfont="iconfont" 
+      icon-sousuo="icon-sousuo" 
+      />
     </view> 
+  </view>
+
+  <view class="bottom-container">
+    <v-login 
+      isModalShow="{{isModalShow}}" 
+      bind:loginSuccess="onLoginSuccess"
+      bind:loginFail="onLoginFail"
+    />
   </view>
 </view>

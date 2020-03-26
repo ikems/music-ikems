@@ -1,0 +1,10 @@
+<view>
+  <textarea
+    maxlength="140"
+    placeholder="请开始你的表演"
+    bindfocus="onFocus"
+  >
+  
+  </textarea>
+  <view class="bottom">最大限制字数</view>
+</view>

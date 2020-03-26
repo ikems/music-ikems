@@ -4,7 +4,51 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isModalShow: false
+  },
 
+  onPublish() {
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: (res) => {
+              console.log(res)
+              this.onLoginSuccess({
+                detail: res.userInfo
+              })
+            },
+          })
+        } else {
+          this.setData({
+            isModalShow: true
+          })
+        }
+      },
+    })
+
+    
+  },
+
+  onLoginSuccess(event) {
+    // console.log(event)
+    const self = event.detail
+    console.log(self)
+    // let nickName = self.userInfo?  self.userInfo.nickName : self.nickName
+    // let avatarUrl = self.userInfo?self.userInfo.avatarUrl : self.avatarUrl
+
+    let nickName = self.nickName || self.userInfo.nickName
+    let avatarUrl = self.avatarUrl || self.userInfo.avatarUrl
+    wx.navigateTo({
+      url: `../blogedit/blogedit?nickName=${nickName}&avatarUrl=${avatarUrl}`,
+    })
+  },
+
+  onLoginFail() {
+    wx.showModal({
+      title: '授权用户才能发布博客',
+      content: ''
+    })
   },
 
   /**

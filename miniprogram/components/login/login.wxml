@@ -1,0 +1,9 @@
+<v-bottomModal isModalShow="{{isModalShow}}">
+  <view slot="btn-authorized">
+    <button 
+      class="login"
+      open-type="getUserInfo"
+      bindgetuserinfo="onGetUserInfo"
+    >获取用户授权信息</button>
+  </view>
+</v-bottomModal>

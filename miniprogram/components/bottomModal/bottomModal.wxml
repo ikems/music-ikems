@@ -1,0 +1,9 @@
+<view class="container" hidden="{{!isModalShow}}">
+  <view class="panel">
+    <i class="iconfont icon-shanchu1" bind:tap="onModalClose"
+    ></i>
+    <slot name="btn-authorized"></slot>
+    <slot name="other"></slot>
+  </view>
+</view>
+

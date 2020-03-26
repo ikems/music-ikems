@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "v-search": "/components/search/search"
+    "v-search": "/components/search/search",
+    "v-login": "/components/login/login"
   },
   "navigationBarTitleText": "blog"
 }

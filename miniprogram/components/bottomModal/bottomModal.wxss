@@ -1,0 +1,27 @@
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.panel {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 300rpx;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
+.icon-shanchu1 {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  padding: 20rpx;
+}

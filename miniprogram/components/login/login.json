@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-bottomModal": "/components/bottomModal/bottomModal"
+  }
+}
