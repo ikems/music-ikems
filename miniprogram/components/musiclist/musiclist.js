@@ -1,4 +1,3 @@
-// components/musiclist/musiclist.js
 
 Component({
   /**

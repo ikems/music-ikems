@@ -8,7 +8,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    blogId: String
+    blogId: String,
+    blog: Object
   },
 
   externalClasses: ['iconfont', 'icon-pinglun', 'icon-fenxiang'],
@@ -21,7 +22,7 @@ Component({
     isLoginShow: false,
     content: ''
   },
-
+ 
   /**
    * 组件的方法列表
    */
@@ -98,13 +99,11 @@ Component({
         wx.showToast({
           title: '评论成功',
         })
-        // console.log('1')
-
         this.setData({
           isModalShow: false,
           content: ''
         })
-        
+        this.triggerEvent('refreshCommentLists')
       })
 
       wx.requestSubscribeMessage({

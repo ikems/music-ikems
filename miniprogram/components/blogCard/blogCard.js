@@ -19,6 +19,11 @@ Component({
     }
   },
 
+  pageLifetimes: {
+    show() {
+      console.log(this.properties.blog)
+    }
+  },
   /**
    * 组件的初始数据
    */

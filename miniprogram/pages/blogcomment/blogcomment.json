@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "v-blogCard": "/components/blogCard/blogCard",
+    "v-blogCtrl": "/components/blogCtrl/blogCtrl"
+  },
   "navigationBarTitleText": "Comments"
 }

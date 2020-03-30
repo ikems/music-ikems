@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     console.log(options)
+    //  console.log(options)
      this.setData({
        blogId: options.blogId
      })
@@ -28,7 +28,7 @@ Page({
       mask: true
     })
 
-    //请求数据
+    //请求获得blog数据
     wx.cloud.callFunction({
       name: 'blog',
       data: {
@@ -97,6 +97,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    const blog = this.data.blog
+    return {
+      title: blog.inputContent,
+      path: `/pages/blogcomment/blogcomment?blogId=${blog._id}`
+    }
   }
 })

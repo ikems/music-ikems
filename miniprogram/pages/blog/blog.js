@@ -101,5 +101,15 @@ Page({
     })
     keyword = event.detail.keyword
     this._loadBlogLists()
+  },
+
+  onShareAppMessage: function (event) {
+    // console.log(event)
+    const blog = event.target.dataset.blog
+    console.log(blog)
+    return {
+      title: blog.inputContent,
+      path: `/pages/blogcomment/blogcomment?blogId=${blog._id}`
+    }
   }
 })

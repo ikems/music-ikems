@@ -21,7 +21,7 @@ Component({
       this.setData({
         playingId: app.getPlayingMusicId().toString()
       })
-      console.log(this.data.playingId)
+      // console.log(this.data.playingId)
     }
   },
   /**
