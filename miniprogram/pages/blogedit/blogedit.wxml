@@ -1,10 +1,43 @@
-<view>
+<view class="container">
   <textarea
     maxlength="140"
     placeholder="请开始你的表演"
     bindfocus="onFocus"
+    bindblur="onBlur"
+    bindinput="onInput"
   >
-  
   </textarea>
-  <view class="bottom">最大限制字数</view>
+
+  <view class="image-container">
+    <block wx:for="{{imageLists}}" wx:key="*this">
+      <view class="image-wrap">
+        <image 
+          class="image" 
+          src="{{item}}"  
+          mode="aspectFill"
+          bindtap="onPreviewImage"
+          data-imgPreSrc="{{item}}"
+        />
+        <i 
+          class="iconfont icon-shanchu" bind:tap="onDeletePhoto"
+          data-index="{{index}}"
+        ></i>
+      </view>   
+    </block>
+    <view 
+      class="image-wrap selectphoto" 
+      bind:tap="onChooseImage"
+      hidden="{{!isSelectPhoto}}"
+    >
+    <i class="iconfont icon-jiahao"></i>
+  </view>
+  </view>
 </view>
+
+<view class="footer" style="bottom:{{footerHeight}}px">
+    <text class="words-num">{{wordsNum}}</text>
+    <button 
+      class="send-btn" 
+      bind:tap="onSendImage"
+    >发布</button>
+  </view>

@@ -3,10 +3,29 @@
     <i class="iconfont icon-fabu" bind:tap="onPublish"></i>
     <view class="search-container">
       <v-search 
-      iconfont="iconfont" 
-      icon-sousuo="icon-sousuo" 
+        iconfont="iconfont" 
+        icon-sousuo="icon-sousuo" 
+        bind:keywordSearch="onSearch"
       />
     </view> 
+  </view>
+
+   <view class="blog-list">
+    <block wx:for="{{blogLists}}" wx:key="_id">
+      <view class="blog-panel">
+        <v-blogCard 
+          blog="{{item}}" 
+          data-blogid="{{item._id}}" 
+          bind:tap="goComment" 
+        />
+        <v-blogCtrl 
+          iconfont="iconfont" 
+          icon-pinglun="icon-pinglun"
+          icon-fenxiang="icon-fenxiang"
+          blogId="{{item._id}}"
+        />
+      </view>
+    </block>
   </view>
 
   <view class="bottom-container">
@@ -17,3 +36,5 @@
     />
   </view>
 </view>
+
+ 

@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "v-search": "/components/search/search",
-    "v-login": "/components/login/login"
+    "v-login": "/components/login/login",
+    "v-blogCard": "/components/blogCard/blogCard",
+    "v-blogCtrl": "/components/blogCtrl/blogCtrl"
   },
-  "navigationBarTitleText": "blog"
+  "navigationBarTitleText": "blog",
+  "enablePullDownRefresh": true
 }

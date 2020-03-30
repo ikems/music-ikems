@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="ctrl-item" bind:tap="onComment">
+    <i class="iconfont icon-pinglun icon"></i>
+    <text>评论</text>
+  </view>
+  <view class="ctrl-item">
+    <i class="iconfont icon-fenxiang icon"></i>
+    <text>分享</text>
+  </view>  
+</view>
+
+<v-login
+  isModalShow="{{isLoginShow}}"
+  bind:loginSuccess="onLoginSuccess"
+  bind:loginFail="onLoginFail"
+/>
+
+<v-bottomModal isModalShow="{{isModalShow}}">
+  <view slot="btn-authorized">
+    <textarea 
+      name="content" 
+      class="comment-content"
+      placeholder="请写评论"
+      bindinput="onInput"
+      fixed="true"
+    >
+    </textarea>
+    <button class="send" bindtap="onSendComment">
+    发送</button>
+  </view>
+</v-bottomModal>

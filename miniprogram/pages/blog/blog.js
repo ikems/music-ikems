@@ -1,10 +1,16 @@
-Page({
+let keyword = ''
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    isModalShow: false
+    isModalShow: false,
+    blogLists: []
+  },
+
+  onLoad() {
+    this._loadBlogLists()
   },
 
   onPublish() {
@@ -33,10 +39,6 @@ Page({
   onLoginSuccess(event) {
     // console.log(event)
     const self = event.detail
-    console.log(self)
-    // let nickName = self.userInfo?  self.userInfo.nickName : self.nickName
-    // let avatarUrl = self.userInfo?self.userInfo.avatarUrl : self.avatarUrl
-
     let nickName = self.nickName || self.userInfo.nickName
     let avatarUrl = self.avatarUrl || self.userInfo.avatarUrl
     wx.navigateTo({
@@ -51,59 +53,53 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  _loadBlogLists(start=0) {
+    wx.showLoading({
+      title: '努力加载中',
+    })
+    wx.cloud.callFunction({
+      name: 'blog',
+      data: {
+        start,
+        keyword,
+        count: 5,
+        $url: 'list',
+      }
+    }).then(res => {
+      this.setData({
+        blogLists: this.data.blogLists.concat(res.result)
+      })
+      wx.hideLoading()
+      wx.stopPullDownRefresh()
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onPullDownRefresh() {
+    this.setData({
+      blogLists: []
+    }) 
+    this._loadBlogLists()
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onReachBottom() {
+    this._loadBlogLists(this.data.blogLists.length)
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  goComment(event) {
+    console.log(event)
+    let blogId = event.target.dataset.blogid
+    wx.navigateTo({
+      url: `../../pages/blogcomment/blogcomment?blogId=${blogId}`,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onSearch(event) {
+    // console.log(event.detail.keyword)
+    this.setData({
+      blogLists: []
+    })
+    keyword = event.detail.keyword
+    this._loadBlogLists()
   }
 })

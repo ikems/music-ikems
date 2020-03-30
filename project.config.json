@@ -75,6 +75,14 @@
 					"id": -1,
 					"name": "blog",
 					"pathName": "pages/blog/blog",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "blogedit",
+					"pathName": "pages/blogedit/blogedit",
+					"query": "nickName=\"开尔木水\"&avatarUrl=\"https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epURrPqv…zGSib6UdEs5V3yNskgOl1j7OW6X3jLtVc7Jto1icTibJQ/132\"",
 					"scene": null
 				}
 			]
