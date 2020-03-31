@@ -75,6 +75,9 @@ Page({
         bgAudioManger.coverImgUrl = currentSong.al.picUrl
         bgAudioManger.singer = currentSong.ar[0].name
         bgAudioManger.epname = currentSong.al.name
+
+        //将音乐保存到本地内存
+       
       }   
     })
     this._loadSongLyric(songId)
@@ -153,6 +156,12 @@ Page({
     this.setData({
       isPlaying: false
     })
+  },
+
+  savePlayHistory() {
+    const song = songLists[currentSongIndex]
+    const openId = app.globalData.openid
+    const history = wx.getStorageInfoSync(openId)
   }
   
 })

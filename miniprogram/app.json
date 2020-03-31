@@ -6,7 +6,9 @@
     "pages/musiclist/musiclist",
     "pages/player/player",
     "pages/blogedit/blogedit",
-    "pages/blogcomment/blogcomment"
+    "pages/blogcomment/blogcomment",
+    "pages/profile-playhistory/profile-playhistory",
+    "pages/profile-bloghistory/profile-bloghistory"
   ],
   "requiredBackgroundModes": [
     "audio",
