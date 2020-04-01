@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "v-songlist": "/components/songlist/songlist"
+  },
+  "navigationBarTitleText": "播放历史"
 }

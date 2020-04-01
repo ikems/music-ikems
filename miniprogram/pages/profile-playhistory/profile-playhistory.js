@@ -6,14 +6,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    musicLists: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    const openId = app.globalData.openId
+    const musicLists = wx.getStorageSync(openId)
+    if (musicLists.length === 0) {
+      wx.showModal({
+        title: '播放历史为空',
+        content: ''
+      })
+    } else {
+      this.setData({
+        musicLists
+      })
+      wx.setStorage({
+        data: musicLists,
+        key: 'musicListStorage',
+      })
+    }
   },
 
   /**

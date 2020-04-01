@@ -77,7 +77,7 @@ Page({
         bgAudioManger.epname = currentSong.al.name
 
         //将音乐保存到本地内存
-       
+        this.savePlayHistory()
       }   
     })
     this._loadSongLyric(songId)
@@ -160,8 +160,25 @@ Page({
 
   savePlayHistory() {
     const song = songLists[currentSongIndex]
-    const openId = app.globalData.openid
-    const history = wx.getStorageInfoSync(openId)
+    const openId = app.globalData.openId
+    const history = wx.getStorageSync(openId)
+
+    let isHave = false
+    for (let i = 0, len = history.length; i < len; i++) {
+      if (history[i].id === song.id) {
+        isHave = true
+        break
+      }
+    }
+
+    if (!isHave) {
+      history.unshift(song)
+      wx.setStorage({
+        data: history,
+        key: openId,
+      })
+    }
+
   }
   
 })
